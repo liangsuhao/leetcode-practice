@@ -25,13 +25,16 @@ nums2 = [2,5,6],       n = 3
 
  */
 var merge = function(nums1, m, nums2, n) {
-    nums1 = nums1.slice(0,m);
-    for(var i=0,j=0;i<n;i++){
-        for(;j<m+n;j++){
-            if((nums2[i]>=nums1[j] && nums2[i]<nums1[j])||(nums2[i]>=nums1[j] && !nums1[j])){
-                nums1.splice(j,0,nums2[i]);
-                break;
-            }
+    var lenm = m-1,lenn = n-1,index = m+n-1;
+    while(lenn>=0){
+        if(nums2[lenn]>=nums1[lenm] || lenm<0){
+            nums1[index] = nums2[lenn];
+            lenn--;
+            index--;
+        }else{
+            nums1[index] = nums1[lenm];
+            lenm--;
+            index--;
         }
     }
     return nums1;
