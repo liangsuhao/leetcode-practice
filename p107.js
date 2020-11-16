@@ -41,9 +41,14 @@ var levelOrderBottom = function(root) {
         for(var i=0;i<nowLength;i++){
             var tmp = queue.shift();
             tmpArr.push(tmp.val);
-            queue.push(tmp.left);
-            queue.push(tmp.right);
+            if(tmp.left){
+               queue.push(tmp.left); 
+            }
+            if(tmp.right){
+               queue.push(tmp.right); 
+            }
         }
         result.unshift(tmpArr);
     }
+    return result;
 };
