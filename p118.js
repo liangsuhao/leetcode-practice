@@ -37,7 +37,7 @@ var generate = function(numRows) {
             tmp.push(start[j]+start[j+1]);
         }
         result.push(tmp);
-        start = tmp;
+        start = tmp.concat();  //深浅拷贝的问题
     }
     return result;
 };
