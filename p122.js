@@ -30,5 +30,18 @@
 解释: 在这种情况下, 没有交易完成, 所以最大利润为 0。
  */
 var maxProfit = function(prices) {
-    
+    if(prices.length == 0){
+        return 0;
+    }
+    var result = 0,tmpMin = prices[0];
+    for(var i=1;i<prices.length;i++){
+        if(prices[i] > tmpMin){
+            result = result+(prices[i]-tmpMin);
+            tmpMin = prices[i];
+        }else{
+            tmpMin = Math.min(prices[i],tmpMin);
+        }
+        
+    }
+    return result;
 };
