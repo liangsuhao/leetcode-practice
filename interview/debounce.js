@@ -27,3 +27,31 @@ function throttle(func,wait) {   //函数节流
     )
   }
 }
+
+function fangdou(func,wait) {
+  let timmer;
+
+  return function() {
+    if(timmer) {
+      clearTimeout(timmer);
+    }
+
+    timmer = setTimeout(()=>{
+      func.apply(this,arguments);
+      timmer = null;
+    },wait)
+  }
+}
+
+function jieliu(func,wait) {
+  let timmer;
+  return function() {
+    if(timmer) {
+      return;
+    }
+    timmer = setTimeout(()=>{
+      func.apply(this,wait);
+      timmer = null;
+    },wait)
+  }
+}
